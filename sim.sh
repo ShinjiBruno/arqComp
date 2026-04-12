@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-# ===================== Configurações =====================
+# ===================== Configuracoes =====================
 VHDL_FILES=(
-    "ula.vhd"
-    "ula_tb.vhd"
+    "Eq12-reg20bits.vhd"
+    "Eq12-RegFile.vhd"
+    "Eq12-RegFile_tb.vhd"
 )
 
-TOP_ENTITY="ula_tb" 
+TOP_ENTITY="Eq12_RegFile_tb" 
 SIM_TIME="2ms"      
 VHDL_STANDARD="--std=08"      # Configura o padrão VHDL para 2008
 

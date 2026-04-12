@@ -43,7 +43,7 @@ begin
         constant RA1_DEC_6MSD : natural := RA1_DEC / 10;
         constant RA2_DEC_6MSD : natural := RA2_DEC / 10;
 
-        -- Truncamento binario por divisao por 4 (2 bits):
+        --divisao por 4 (2 bits):
         -- 2449005 -> 532030 x 2^2 (resto descartado)
         -- 2017001 -> 504250 x 2^2 (resto descartado)
         constant RA1_BIN_20B : natural := RA1_DEC / 4;
