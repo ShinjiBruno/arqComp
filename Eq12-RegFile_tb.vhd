@@ -20,13 +20,13 @@ architecture tb of Eq12_RegFile_tb is
     signal rd1 : unsigned(19 downto 0);
     signal rd2 : unsigned(19 downto 0);
 
-    constant RA1_ORIG : natural := 2469804;
-    constant RA2_ORIG : natural := 2449005;
+    constant RA1_ORIG : natural := 246980;
+    constant RA2_ORIG : natural := 244900 ;
     constant RA3_ORIG : natural := 123456;
 
-    constant RA1_20B : natural := RA1_ORIG mod (2 ** 20);
-    constant RA2_20B : natural := RA2_ORIG mod (2 ** 20);
-    constant RA3_20B : natural := RA3_ORIG mod (2 ** 20);
+    constant RA1_20B : natural := RA1_ORIG ;
+    constant RA2_20B : natural := RA2_ORIG ;
+    constant RA3_20B : natural := RA3_ORIG ;
 begin
     uut: entity work.Eq12_RegFile
         port map (
@@ -49,7 +49,7 @@ begin
         we3 <= '0';
         a1 <= "000";
         a2 <= "000";
-        wait for 2 * T_CLK;
+        wait for T_CLK;
         rst <= '0';
         wait for T_CLK;
 
@@ -57,15 +57,15 @@ begin
 
         a3  <= "001";
         wd3 <= to_unsigned(RA1_20B, 20);
-        wait until rising_edge(clk);
+        wait for T_CLK; -- until rising_edge(clk);
 
         a3  <= "010";
         wd3 <= to_unsigned(RA2_20B, 20);
-        wait until rising_edge(clk);
+        wait for T_CLK; -- until rising_edge(clk);
 
         a3  <= "011";
         wd3 <= to_unsigned(RA3_20B, 20);
-        wait until rising_edge(clk);
+        wait for T_CLK; -- until rising_edge(clk);
 
         we3 <= '0';
         wait for T_CLK;
