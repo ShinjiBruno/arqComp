@@ -4,10 +4,12 @@
 VHDL_FILES=(
     "Eq12-reg20bits.vhd"
     "Eq12-RegFile.vhd"
-    "Eq12-RegFile_tb.vhd"
+    "Eq12-ULA.vhd"
+    "Eq12-Reg_ULA_Top.vhd"
+    "Eq12-Reg_ULA_Top_tb.vhd"
 )
 
-TOP_ENTITY="Eq12_RegFile_tb" 
+TOP_ENTITY="Eq12_Reg_ULA_Top_tb" 
 SIM_TIME="2ms"      
 VHDL_STANDARD="--std=08"      # Configura o padrão VHDL para 2008
 
