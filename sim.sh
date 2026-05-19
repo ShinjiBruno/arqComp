@@ -13,7 +13,7 @@ VHDL_FILES=(
 )
 
 TOP_ENTITY="Eq12_ROM_PC_UC_tb" 
-SIM_TIME="1ms"      
+SIM_TIME="1us"      
 VHDL_STANDARD="--std=08"      # Configura o padrão VHDL para 2008
 
 # Diretório de saída (padrão: build). Pode ser passado como 1º argumento.
