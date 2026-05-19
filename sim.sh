@@ -2,15 +2,18 @@
 
 # ===================== Configuracoes =====================
 VHDL_FILES=(
-    "Eq12-reg20bits.vhd"
-    "Eq12-RegFile.vhd"
-    "Eq12-ULA.vhd"
-    "Eq12-Reg_ULA_Top.vhd"
-    "Eq12-Reg_ULA_Top_tb.vhd"
+    "Eq12-PC.vhd"
+    "Eq12-PC_plus1.vhd"
+    "Eq12-PC_Top.vhd"
+    "Eq12-Rom.vhd"
+    "Eq12-Maq_estados.vhd"
+    "Eq12-Un_controle.vhd"
+    "Eq12-ROM_PC_UC.vhd"
+    "Eq12-ROM_PC_UC_tb.vhd"
 )
 
-TOP_ENTITY="Eq12_Reg_ULA_Top_tb" 
-SIM_TIME="2ms"      
+TOP_ENTITY="Eq12_ROM_PC_UC_tb" 
+SIM_TIME="1ms"      
 VHDL_STANDARD="--std=08"      # Configura o padrão VHDL para 2008
 
 # Diretório de saída (padrão: build). Pode ser passado como 1º argumento.
