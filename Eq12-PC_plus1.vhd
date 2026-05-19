@@ -4,14 +4,14 @@ use ieee.numeric_std.all;
 
 entity eq12_pc_plus1 is
     port(
-        instr_in: in unsigned(6 downto 0);
+        address_in: in unsigned(6 downto 0);
 
-        instr_out: out unsigned(6 downto 0);
+        address_out: out unsigned(6 downto 0)
     );
-end entity;
+end entity eq12_pc_plus1;
 
 architecture a_eq12_pc_plus1 of eq12_pc_plus1 is
 begin
-    instr_out <= instr_in + 1;
+    address_out <= address_in + 1;
 
-end architecture;
+end architecture a_eq12_pc_plus1;

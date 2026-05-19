@@ -8,10 +8,10 @@ entity eq12_maq_estados is
         rst : in std_logic;
         wr_en : in std_logic;
 
-        o_estado: out std_logic; --0: fetch; 1: decode/execute
+        o_estado: out std_logic --0: fetch; 1: decode/execute
     );
 
-end entity;
+end entity eq12_maq_estados;
 
 architecture a_eq12_maq_estados of eq12_maq_estados is
     signal s_estado : std_logic := '0';
@@ -27,4 +27,4 @@ begin
         end if;
     end process;
     o_estado <= s_estado;
-end architecture;
+end architecture a_eq12_maq_estados;
