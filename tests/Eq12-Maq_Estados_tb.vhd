@@ -1,3 +1,4 @@
+-- Autoria: Frederico Albert Vicente
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -39,7 +40,7 @@ begin
         wait for clk_period / 2;
     end process;
 
-    -- Processo de estímulos para testar o Flip-Flop T e o Reset
+    -- Processo de estï¿½mulos para testar o Flip-Flop T e o Reset
     p_estimulos: process
     begin
         -- teste reset
@@ -59,7 +60,7 @@ begin
         -- teste reset aleatorio
         wr_en_tb <= '1';
         wait for clk_period * 1.5; -- Deixa rodar um pouco
-        rst_tb <= '1';             -- Força o reset abruptamente
+        rst_tb <= '1';             -- Forï¿½a o reset abruptamente
         wait for clk_period * 2;
 
         wait;

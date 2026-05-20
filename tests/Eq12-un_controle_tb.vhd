@@ -1,3 +1,4 @@
+-- Autoria: Frederico Albert Vicente
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -11,7 +12,7 @@ architecture sim of tb_eq12_un_controle is
         port(
             clk         : in std_logic;
             rst         : in std_logic;
-            instruction : in unsigned(31 downto 0);
+            instruction : in unsigned(11 downto 0);
             jump_en     : out std_logic;
             pc_wr       : out std_logic
         );
@@ -20,7 +21,7 @@ architecture sim of tb_eq12_un_controle is
     -- Sinais internos
     signal clk_tb         : std_logic := '0';
     signal rst_tb         : std_logic := '0';
-    signal instruction_tb : unsigned(31 downto 0) := (others => '0');
+    signal instruction_tb : unsigned(11 downto 0) := (others => '0');
     signal jump_en_tb     : std_logic;
     signal pc_wr_tb       : std_logic;
 
@@ -44,7 +45,7 @@ begin
         wait for clk_period / 2;
     end process;
 
-    -- Processo de estímulos 
+    -- Processo de estï¿½mulos 
     p_estimulos: process
     begin
         -- teste reset
@@ -60,7 +61,7 @@ begin
         instruction_tb <= x"C000000F";
         wait for clk_period * 2;
 
-        -- Finaliza a simulação
+        -- Finaliza a simulaï¿½ï¿½o
         wait;
     end process;
 

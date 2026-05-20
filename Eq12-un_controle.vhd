@@ -1,3 +1,5 @@
+-- Autoria: Bruno Shinji
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -7,7 +9,7 @@ entity eq12_un_controle is
         clk: in std_logic;
         rst: in std_logic;
 
-        instruction: in unsigned(31 downto 0);
+        instruction: in unsigned(11 downto 0);
         jump_en: out std_logic;
         pc_wr: out std_logic
     );
@@ -24,7 +26,7 @@ architecture a_eq12_un_controle of eq12_un_controle is
             wr_en => s_wr_en_maqest, 
             o_estado => s_estado
         );
-        opcode <= instruction(31 downto 26);
+        opcode <= instruction(11 downto 6);
         jump_en <= '1' when opcode = "000010" else '0'; 
         pc_wr <= '1' when s_estado = '1' else '0';
 

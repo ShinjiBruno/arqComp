@@ -1,3 +1,5 @@
+-- Autoria: Frederico Albert Vicente
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -11,13 +13,13 @@ architecture sim of tb_rom is
         port (
             clk: in std_logic;
             endereco: in unsigned(6 downto 0);
-            dado: out unsigned(31 downto 0)
+            dado: out unsigned(11 downto 0)
         );
     end component;
 
     signal clk_tb      : std_logic := '0';
     signal endereco_tb : unsigned(6 downto 0) := (others => '0');
-    signal dado_tb     : unsigned(31 downto 0);
+    signal dado_tb     : unsigned(11 downto 0);
 
     constant tempo_espera : time := 10 ns;
 
@@ -40,19 +42,19 @@ begin
     begin
         wait for tempo_espera;
 
-        -- Endereço 0 (retorna x"00000000")
+        -- Endereï¿½o 0 (retorna x"00000000")
         endereco_tb <= to_unsigned(0, 7);
         wait for tempo_espera; 
 
-        -- Endereço 1 (retorna '0')
+        -- Endereï¿½o 1 (retorna '0')
         endereco_tb <= to_unsigned(1, 7);
         wait for tempo_espera;
 
-        -- Endereço 10 (retorna '0')
+        -- Endereï¿½o 10 (retorna '0')
         endereco_tb <= to_unsigned(10, 7);
         wait for tempo_espera;
         
-        -- Endereço 127 (limite, retorna '0')
+        -- Endereï¿½o 127 (limite, retorna '0')
         endereco_tb <= to_unsigned(127, 7);
         wait for tempo_espera;
 

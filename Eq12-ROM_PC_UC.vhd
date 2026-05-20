@@ -1,3 +1,4 @@
+-- Autoria: Bruno Shinji
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -6,7 +7,7 @@ entity eq12_rom_pc_uc is
     port(
         clk: in std_logic;
         rst : in std_logic;
-        instr_out: out unsigned(31 downto 0);
+        instr_out: out unsigned(11 downto 0);
         address_out: out unsigned(6 downto 0);
         jump_en: out std_logic;
         pc_we: out std_logic
@@ -18,7 +19,7 @@ architecture a_eq12_rom_pc_uc of eq12_rom_pc_uc is
     signal s_pc_we: std_logic;
     signal s_jump_en: std_logic;
     signal s_address: unsigned(6 downto 0);
-    signal s_instr: unsigned(31 downto 0);
+    signal s_instr: unsigned(11 downto 0);
     signal s_address_jump: unsigned(6 downto 0);
 
 begin

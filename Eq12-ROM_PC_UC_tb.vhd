@@ -1,3 +1,5 @@
+-- Autoria: Frederico Albert Vicente
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -12,7 +14,7 @@ architecture tb of Eq12_ROM_PC_UC_tb is
 	signal rst    : std_logic := '1';
 	signal wr_en  : std_logic := '0';
 
-	signal instr_out   : unsigned(31 downto 0);
+	signal instr_out   : unsigned(11 downto 0);
 	signal address_out : unsigned(6 downto 0);
 	signal jump_en_sig : std_logic;
 	signal pc_we_sig   : std_logic;
