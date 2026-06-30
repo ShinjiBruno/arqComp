@@ -10,21 +10,27 @@ entity eq12_maq_estados is
         rst : in std_logic;
         wr_en : in std_logic;
 
-        o_estado: out std_logic --0: fetch; 1: decode/execute
+        o_estado: out unsigned(1 downto 0) --0: fetch; 1: decode; 2: execute; 3: write back
     );
 
 end entity eq12_maq_estados;
 
 architecture a_eq12_maq_estados of eq12_maq_estados is
-    signal s_estado : std_logic := '0';
+    signal s_estado : unsigned(1 downto 0) := "00";
+    type estados is array (0 to 3) of unsigned(1 downto 0);
+    constant c_estados : estados := ("00", "01", "10", "11");
 begin
     process(clk,rst,wr_en)
     begin
         if rst = '1' then
-            s_estado <= '0';
+            s_estado <= "00";
         elsif wr_en = '1' then
             if rising_edge(clk) then
-                s_estado <= not s_estado;
+                if s_estado = "11" then
+                    s_estado <= "00";
+                else 
+                    s_estado <= c_estados(to_integer(s_estado) + 1);
+                end if;
             end if;
         end if;
     end process;

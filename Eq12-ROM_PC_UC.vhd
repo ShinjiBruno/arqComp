@@ -7,10 +7,17 @@ entity eq12_rom_pc_uc is
     port(
         clk: in std_logic;
         rst : in std_logic;
-        instr_out: out unsigned(11 downto 0);
-        address_out: out unsigned(6 downto 0);
-        jump_en: out std_logic;
-        pc_we: out std_logic
+        lt: in std_logic;   
+        zero: in std_logic; 
+        address_jump: in unsigned(6 downto 0); 
+
+        address_out: out unsigned(6 downto 0); --debug
+        instr_out: out unsigned(31 downto 0);
+        ulaOp: out unsigned(1 downto 0);
+        ulaSrc: out std_logic;
+        regWrite: out std_logic;
+        isImm: out std_logic;
+        isMov: out std_logic
     );
 end entity eq12_rom_pc_uc;
 
@@ -19,8 +26,15 @@ architecture a_eq12_rom_pc_uc of eq12_rom_pc_uc is
     signal s_pc_we: std_logic;
     signal s_jump_en: std_logic;
     signal s_address: unsigned(6 downto 0);
-    signal s_instr: unsigned(11 downto 0);
-    signal s_address_jump: unsigned(6 downto 0);
+    signal s_instr: unsigned(31 downto 0);
+    signal s_ulaOp: unsigned(1 downto 0);
+    signal s_ulaSrc: std_logic;
+    signal s_regWrite: std_logic;
+    signal s_blt: std_logic;
+    signal s_beq: std_logic;
+    signal s_pcWrite: std_logic;
+    signal s_isImm: std_logic;
+    signal s_isMov: std_logic;
 
 begin
     pc_top: entity work.eq12_pc_top(a_eq12_pc_top) port map(
@@ -28,7 +42,7 @@ begin
         rst => rst,
         wr_en => s_pc_we,
         jump_en => s_jump_en,
-        address_jump => s_address_jump,
+        address_jump => address_jump,
         address => s_address
     );
 
@@ -41,15 +55,26 @@ begin
         clk => clk,
         rst => rst,
         instruction => s_instr,
-        jump_en => s_jump_en,
-        pc_wr => s_pc_we
+
+        pcWrite => s_pcWrite,
+        pc_wr => s_pc_we,
+        regWrite => s_regWrite,
+        beq => s_beq,
+        blt => s_blt,
+        ulaSrc => s_ulaSrc,
+        ulaOp => s_ulaOp,
+        isImm => s_isImm,
+        isMov => s_isMov
     );
 
-    s_address_jump <= s_instr(6 downto 0);
+    s_jump_en <= '1' when (zero = '1' and s_beq = '1') or (lt = '1' and s_blt = '1') or (s_pcWrite = '1') else '0';
 
     instr_out <= s_instr;
     address_out <= s_address;
-    jump_en <= s_jump_en;
-    pc_we <= s_pc_we;
+    ulaOp <= s_ulaOp;
+    ulaSrc <= s_ulaSrc;
+    regWrite <= s_regWrite;
+    isImm <= s_isImm;
+    isMov <= s_isMov;
 
 end architecture a_eq12_rom_pc_uc;

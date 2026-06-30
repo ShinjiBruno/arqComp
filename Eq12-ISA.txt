@@ -1,0 +1,48 @@
+# Eq12 - Documentacao da Codificacao  
+Bruno Shinji / Frederico Albert Vicente
+
+
+## FORMATO I - 32 bits
+------------------------------------------------------------
+
+  31    26 25  23 22  20 19                0
+ +--------+------+------+---------------------+
+ | opcode | reg1 | reg2 |         imm         |
+ +--------+------+------+---------------------+
+    6 b     3 b    3b             20b
+
+Campos:
+    - opcode [31..26] - 6 bits -> identifica a operacao
+    - reg1   [25..23] - 3 bits -> endereco do registrador fonte 1
+    - reg2   [22..20] - 3 bits -> endereco do registrador fonte 2 (tambem destino)
+    - imm    [ 19.. 0] - 7 bits -> imediato (signed - sign-extend) ou endereco
+                                     absoluto de salto
+
+## Formato R
+  31    26 25  23 22  20 19  17 16           0
+ +--------+------+------+------+--------------+
+ | opcode | reg1 | reg2 | reg3 |  imm         |
+ +--------+------+------+------+--------------+
+    6 b     3 b    3b      3b       17b
+
+## OPCODDES
+------------------------------------------------------------
+  opcode        mnemonico       semantica
+  -----------   -----------     -------------------------------------------------
+   000000        NOP            nenhuma operacao
+   000001        MOV r1,r2      r1 <- r2   (reg1 = destino, reg2 = fonte)
+   000010        ADDI r1,r2,imm r1 <- r2 + imm
+   000011        ADD r1,r2,r3   r1 <- r2 + r3
+   000100        SUB r1,r2,r3   r1 <- r2 - r3
+   000101        DIV r1,r2,r3   r1 <- r2 / r3   
+   000110        JMP addr7      PC <- addr (salto incondicional)
+   000111        BEQ r1,r2,imm   se (r1==r2) PC<-a7 
+   001000        BLT r1,r2,imm   se (r2 > r1 unsigned) PC<-a7 
+
+
+EXEMPLO:
+
+   ADDI R4, #4            (LAB 6)
+      R4=100 (b), imm7=0000100 (b)
+        000010 000 100 0000000000000 0000100
+      = "00001000010000000000000000000100"

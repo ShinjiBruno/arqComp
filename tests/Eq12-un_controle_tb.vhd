@@ -12,7 +12,7 @@ architecture sim of tb_eq12_un_controle is
         port(
             clk         : in std_logic;
             rst         : in std_logic;
-            instruction : in unsigned(11 downto 0);
+            instruction : in unsigned(31 downto 0);
             jump_en     : out std_logic;
             pc_wr       : out std_logic
         );
@@ -21,7 +21,7 @@ architecture sim of tb_eq12_un_controle is
     -- Sinais internos
     signal clk_tb         : std_logic := '0';
     signal rst_tb         : std_logic := '0';
-    signal instruction_tb : unsigned(11 downto 0) := (others => '0');
+    signal instruction_tb : unsigned(31 downto 0) := (others => '0');
     signal jump_en_tb     : std_logic;
     signal pc_wr_tb       : std_logic;
 

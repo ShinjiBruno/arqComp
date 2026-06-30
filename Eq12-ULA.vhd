@@ -1,3 +1,4 @@
+-- Autoria: Bruno Shinji
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -47,5 +48,5 @@ begin
 
 	out_ULA <= y_res;
 	zero <= '1' when y_res = (y_res'range => '0') else '0';
-	lt <= '1' when a_u < b_u else '0';
+	lt   <= '1' when a_u < b_u else '0';
 end architecture rtl;
