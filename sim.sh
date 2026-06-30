@@ -7,7 +7,7 @@ VHDL_FILES=(
     "Eq12-PC_Top.vhd"
     "Eq12-Rom.vhd"
     "Eq12-Maq_Estados.vhd"
-    "Eq12-Un_controle.vhd"
+    "Eq12-un_controle.vhd"
     "Eq12-reg20bits.vhd"
     "Eq12-RegFile.vhd"
     "Eq12-ULA.vhd"

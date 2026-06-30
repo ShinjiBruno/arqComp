@@ -16,8 +16,8 @@ entity eq12_rom_pc_uc is
         ulaOp: out unsigned(1 downto 0);
         ulaSrc: out std_logic;
         regWrite: out std_logic;
-        isImm: out std_logic;
-        isMov: out std_logic
+        loadCte: out std_logic;
+        jumpInstr: out std_logic
     );
 end entity eq12_rom_pc_uc;
 
@@ -33,9 +33,9 @@ architecture a_eq12_rom_pc_uc of eq12_rom_pc_uc is
     signal s_blt: std_logic;
     signal s_beq: std_logic;
     signal s_pcWrite: std_logic;
-    signal s_isImm: std_logic;
-    signal s_isMov: std_logic;
-
+    signal s_loadCte:std_logic;
+    signal s_jumpInstr: std_logic;
+   
 begin
     pc_top: entity work.eq12_pc_top(a_eq12_pc_top) port map(
         clk => clk,
@@ -63,8 +63,8 @@ begin
         blt => s_blt,
         ulaSrc => s_ulaSrc,
         ulaOp => s_ulaOp,
-        isImm => s_isImm,
-        isMov => s_isMov
+        loadCte => s_loadCte,
+        jumpInstr => s_jumpInstr
     );
 
     s_jump_en <= '1' when (zero = '1' and s_beq = '1') or (lt = '1' and s_blt = '1') or (s_pcWrite = '1') else '0';
@@ -74,7 +74,8 @@ begin
     ulaOp <= s_ulaOp;
     ulaSrc <= s_ulaSrc;
     regWrite <= s_regWrite;
-    isImm <= s_isImm;
-    isMov <= s_isMov;
+    loadCte <= s_loadCte;
+    jumpInstr <= s_jumpInstr;
+
 
 end architecture a_eq12_rom_pc_uc;
