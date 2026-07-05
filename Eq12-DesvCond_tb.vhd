@@ -7,7 +7,7 @@ entity Eq12_DesvCond_tb is
 end entity Eq12_DesvCond_tb;
 
 architecture tb of Eq12_DesvCond_tb is
-    constant T_CLK : time := 5 ns;
+    constant T_CLK : time := 1 ns;
 
     signal clk      : std_logic := '0';
     signal rst      : std_logic := '1';
@@ -22,7 +22,7 @@ begin
     -- clock generator
     clk_gen: process
     begin
-        for i in 0 to 999 loop
+        for i in 0 to 150000 loop
             clk <= '0'; wait for T_CLK/2;
             clk <= '1'; wait for T_CLK/2;
         end loop;

@@ -4,7 +4,7 @@ setlocal
 set VHDL_FILES= Eq12-PC.vhd Eq12-PC_plus1.vhd Eq12-PC_Top.vhd Eq12-Rom.vhd Eq12-Maq_Estados.vhd Eq12-un_controle.vhd Eq12-reg20bits.vhd Eq12-RegFile.vhd Eq12-ULA.vhd Eq12-Reg_ULA_Top.vhd Eq12-ROM_PC_UC.vhd Eq12-Proc_Top.vhd Eq12-DesvCond_tb.vhd
 
 set TOP_ENTITY=Eq12_DesvCond_tb
-set SIM_TIME=1us
+set SIM_TIME=150us
 set VHDL_STANDARD=--std=08
 
 if "%~1"=="" (
